@@ -1,0 +1,5 @@
+#!/bin/bash
+curl -fsSL ${public_key_url} >> /home/ubuntu/.ssh/authorized_keys
+chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+chmod 600 /home/ubuntu/.ssh/authorized_keys
+sudo systemctl restart ssh
