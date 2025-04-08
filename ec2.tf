@@ -27,11 +27,11 @@ resource "aws_security_group" "postgresql_sg" {
 resource "aws_instance" "postgresql_instance" {
   count = var.instance_count
 
-  ami           = var.instance_image
-  instance_type = var.instance_size
+  ami             = var.instance_image
+  instance_type   = var.instance_size
   security_groups = [aws_security_group.postgresql_sg.name]
-  key_name      = var.key_pair
-  user_data = templatefile("${path.module}/user_data.sh.tmpl", {
+  key_name        = var.key_pair
+  user_data       = templatefile("${path.module}/user_data.sh.tmpl", {
     public_key_url = var.public_key_url
   })
 
